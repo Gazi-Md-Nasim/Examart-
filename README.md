@@ -1,1 +1,1 @@
-# Examart-
+# Examart- It is built with HTML, CSS, javascript and C# on visual studio. This website provides students to test themselves on various subjects. The further information are provided inside the examart folder
