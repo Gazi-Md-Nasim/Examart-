@@ -1,0 +1,145 @@
+/*create a database in ms server name 'LogInSystem'*/
+/* first select "create procedure userInsertAndUpdate" and execute, them comment the prcedure selet the rest and execute*/
+
+create procedure userInsertAndUpdate
+@LogInID int,
+@Name varchar(MAX),
+@Email varchar(MAX),
+@Password varchar(50),
+@Department varchar(MAX),
+@University varchar(MAX),
+@Address varchar(MAX)
+AS
+BEGIN
+IF(@LogInID=0)
+BEGIN
+INSERT INTO UserRecord(Name,Email,Password,Department,University,Address)
+VALUES(@Name,@Email,@Password,@Department,@University,@Address)
+END
+ELSE
+BEGIN
+UPDATE UserRecord
+SET
+Name=@Name,
+Email=@Email,
+Password=@Password,
+Department=@Department,
+University=@University,
+Address=@Address
+WHERE LogInID=@LogInID
+END
+END
+
+
+/*for userRecord, LohInID must be selected as a identity coloumn*/
+create table userRecord(
+LogInID int not null,
+Name VARCHAR(MAX) not null,
+Email VARCHAR(MAX) not null,
+Password VARCHAR(50) not null,
+ProfilePic VARCHAR(MAX),
+Department VARCHAR(50),
+University VARCHAR(MAX),
+Address VARCHAR(MAX),
+primary key(LogInID));
+/*after creating UserRecord, go to its properties and inside the table designer select LogInID as identity coloumn*/
+create table CommentTable(
+Name VARCHAR(MAX), 
+Date datetime,
+Comment VARCHAR(MAX));
+
+create table resources(
+Name VARCHAR(MAX),
+Department VARCHAR(50),
+Location VARCHAR(MAX));
+
+create table AdminList(
+id varchar(max),
+Name VARCHAR(MAX),
+Email VARCHAR(MAX));
+
+create table Section(
+Name varchar(50),
+Link VARCHAR(MAX),
+BackgroundPic VARCHAR(MAX));
+
+insert into AdminList values('1009','admin','examart086@gmail.com');
+insert into UserRecord values('Gazi Md Nasim','gm.nasim15@gmail.com','123456789','profilepic/User12.jpg','ECE','KUET','Khulna');
+insert into UserRecord values('Admin','examart086@gmail','12345','profilepic/User1009.jpg','ECE','KUET','Khulna');
+insert into UserRecord values('Rexes','nasim1709012@stud.kuet.ac.bd','12345','profilepic/User1010.jpg','ECE','KUET','Khulna');
+
+create table User1009(
+ExamName VARCHAR(50),
+Marks VARCHAR(50),
+Status VARCHAR(50));
+
+create table User12(
+ExamName VARCHAR(50),
+Marks VARCHAR(50),
+Status VARCHAR(50)
+);
+
+create table User1010(
+ExamName VARCHAR(50),
+Marks VARCHAR(50),
+Status VARCHAR(50)
+);
+
+create table engineering (
+Name VARCHAR(max),
+link VARCHAR(max),
+picture VARCHAR(max),
+department VARCHAR(max)
+);
+
+create table art(
+Name VARCHAR(max),
+link VARCHAR(max),
+picture VARCHAR(max),
+department VARCHAR(max)
+);
+
+create table history(
+Name VARCHAR(max),
+link VARCHAR(max),
+picture VARCHAR(max),
+department VARCHAR(max)
+);
+
+create table literature(
+Name VARCHAR(max),
+link VARCHAR(max),
+picture VARCHAR(max),
+department VARCHAR(max)
+);
+
+create table medical(
+Name VARCHAR(max),
+link VARCHAR(max),
+picture VARCHAR(max),
+department VARCHAR(max)
+);
+
+create table science(
+Name VARCHAR(max),
+link VARCHAR(max),
+picture VARCHAR(max),
+department VARCHAR(max)
+);
+
+insert into engineering values('MATTER','exam_page.aspx','ENGINEERING/MATTER.JPG','ECE');
+insert into engineering values('HARDWARE & SOFTWARE','hardsoft.aspx','ENGINEERING/HARDWARE & SOFTWARE.JPG','CSE');
+insert into engineering values('SECURITY','','ENGINEERING/SECURITY.JPG','CSE');
+insert into engineering values('COMPUTER NETWORK','','ENGINEERING/COMPUTER NETWORK.JPG','CSE');
+insert into engineering values('TRANSDUCER','','ENGINEERING/TRANSDUCER.JPG','EEE');
+insert into engineering values('TELEVISION SYSTEM','','ENGINEERING/TELEVISION SYSTEM.JPG','EEE');
+insert into engineering values('CRO','','ENGINEERING/CRO.JPG','EEE');
+insert into engineering values('C PROGRAMMING','','ENGINEERING/C PROGRAMMING.JPG','CSE');
+insert into engineering values('CRYSTAL','','ENGINEERING/CRYSTAL.JPG','ECE');
+insert into engineering values('C PLUS PROGRAMMING','','ENGINEERING/C PLUS PROGRAMMING.JPG','CSE');
+insert into engineering values('MATERIALS','','ENGINEERING/MATERIALS.JPG','ECE');
+insert into engineering values('SEMICONDUCTOR','','ENGINEERING/SEMICONDUCTOR.JPG','ECE');
+insert into engineering values('METALS','','ENGINEERING/METALS.JPG','ECE');
+insert into engineering values('INFORMATION SYSTEM','','ENGINEERING/INMORMATION SYSTEM.JPG','ECE');
+
+
